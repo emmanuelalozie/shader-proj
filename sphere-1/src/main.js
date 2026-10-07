@@ -15,7 +15,7 @@ scene.add(mesh)
 
 // Light setup
 const light = new THREE.PointLight(0xffffff, 100, 100)
-light.position.set(0, 10, 10);
+light.position.set(0, 10, 10)
 scene.add(light)
 
 const sizes = {
@@ -34,7 +34,7 @@ scene.add(camera)
 const canvas = document.querySelector(".webgl")
 const renderer = new THREE.WebGLRenderer({ canvas })
 renderer.setSize(sizes.width, sizes.height)
-renderer.setPixelRatio(2)
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 renderer.render(scene, camera)
 
 // Controls setup
@@ -54,6 +54,7 @@ window.addEventListener('resize', () => {
   camera.updateProjectionMatrix()
   
   renderer.setSize(sizes.width, sizes.height)
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
 const loop = () => {
